@@ -112,15 +112,14 @@ def fill(x1, y1, color, canvas):
 if __name__ == "__main__":
     basedir = os.path.abspath(os.path.dirname(__file__))
     input_dir = basedir + '/input/'
-    input_files = [input_dir + f for f in os.listdir(input_dir) if os.path.isfile(os.path.join(input_dir, f))]
+    input_file = input_dir + "input.txt"
+    result = None
 
-    for file in input_files:
-        result = None
-        with open(file, 'r') as f:
-            with open(file[:-4]+'_result.txt', 'w+') as f1:
-                for line in f:
-                    result = process(line, result)
-                    for res in result:
-                        f1.writelines("".join(res)+"\n")
+    with open(input_file, 'r') as f:
+        with open('output.txt', 'w+') as f1:
+            for line in f:
+                result = process(line, result)
+                for res in result:
+                    f1.writelines("".join(res)+"\n")
 
-    print("Job is done, look at new output(s)!")
+    print("Job is done, look at new output!")
