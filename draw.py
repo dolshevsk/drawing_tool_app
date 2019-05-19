@@ -102,26 +102,11 @@ def fill(x1, y1, color, canvas):
             visited.add((point_x, point_y))
             canvas[point_y][point_x] = str(color)
     #  made with 2 if because check in set always O(1)
-            if (point_x-1, point_y) not in cache:
-                if canvas[point_y][point_x-1] == replace_point:
-                    cache.add((point_x-1, point_y))
-                    stack.append((point_x-1, point_y))
-
-            if (point_x+1, point_y) not in cache:
-                if canvas[point_y][point_x+1] == replace_point:
-                    cache.add((point_x+1, point_y))
-                    stack.append((point_x+1, point_y))
-
-            if (point_x, point_y-1) not in cache:
-                if canvas[point_y-1][point_x] == replace_point:
-                    cache.add((point_x, point_y-1))
-                    stack.append((point_x, point_y-1))
-
-            if (point_x, point_y+1) not in cache:
-                if canvas[point_y+1][point_x] == replace_point:
-                    cache.add((point_x, point_y+1))
-                    stack.append((point_x, point_y+1))
-
+            for x3, y3 in ((-1, 0), (1, 0), (0, -1), (0, 1)):
+                if (point_x+x3, point_y+y3) not in cache:
+                    if canvas[point_y+y3][point_x+x3] == replace_point:
+                        cache.add((point_x+x3, point_y+y3))
+                        stack.append((point_x+x3, point_y+y3))
     return canvas
 
 if __name__ == "__main__":
