@@ -1,5 +1,5 @@
 # drawing_tool_app
-drawing app that works with files
+drawing app that works with .txt files
 
 ## Instruction
 
